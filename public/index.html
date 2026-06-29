@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>MotionAI · Classifier</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="dash" role="main">
+  <h2 class="sr-only">Motion classifier dashboard — real-time accelerometer inference with waveform, sensor mode badges, probability bars, and confidence indicator.</h2>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="logo">MotionAI</div>
+    <div class="badge-row">
+      <span class="sbadge off" id="badgeSensor">● Sensor</span>
+      <span class="sbadge off" id="badgeModel">● Model</span>
+      <span class="sbadge off" id="badgeLive">● Live</span>
+    </div>
+  </div>
+
+  <!-- Sensor mode strip -->
+  <div class="mode-strip">
+    <span class="mode-label">Mode:</span>
+    <span class="mchip" id="m1">Generic Sensor</span>
+    <span class="mchip" id="m2">HW Motion</span>
+    <span class="mchip" id="m3">SW Filter</span>
+    <span class="mchip" id="m0">Demo</span>
+  </div>
+
+  <!-- Waveform card -->
+  <div class="wave-card">
+    <div class="wave-head">
+      <span class="wave-title">Live Accelerometer · XYZ</span>
+      <span class="wave-fps" id="fpsBadge">60 fps</span>
+    </div>
+    <canvas id="waveCanvas" height="100"></canvas>
+    <div class="axes-row">
+      <div class="ax"><div class="ax-name">X axis</div><div class="ax-val x" id="axX">–</div></div>
+      <div class="ax"><div class="ax-name">Y axis</div><div class="ax-val y" id="axY">–</div></div>
+      <div class="ax"><div class="ax-name">Z axis</div><div class="ax-val z" id="axZ">–</div></div>
+    </div>
+  </div>
+
+  <!-- Main grid -->
+  <div class="main-grid">
+
+    <!-- Probability card -->
+    <div class="prob-card">
+      <div class="prob-title">Probabilities</div>
+      <div class="prob-list" id="probList"></div>
+    </div>
+
+    <!-- Confidence / prediction card -->
+    <div class="conf-card" id="confCard">
+      <div class="conf-title">Prediction</div>
+      <div class="gesture-ring" id="gestureRing">
+        <div class="gesture-icon" id="gestureIcon">🤖</div>
+        <div class="gesture-name" id="gestureName">waiting</div>
+      </div>
+      <div class="conf-pct" id="confPct">–</div>
+      <div class="conf-meter">
+        <div class="conf-fill" id="confFill"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="bot-row">
+    <button id="btnStart">Start Sensors</button>
+    <span id="statusTxt">Tap to begin</span>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
